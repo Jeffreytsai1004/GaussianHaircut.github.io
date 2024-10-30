@@ -1,83 +1,43 @@
-Gaussian-Splatting License  
+Gaussian-Splatting 许可证  
 ===========================  
 
-**Inria** and **the Max Planck Institut for Informatik (MPII)** hold all the ownership rights on the *Software* named **gaussian-splatting**.  
-The *Software* is in the process of being registered with the Agence pour la Protection des  
-Programmes (APP).  
+**Inria** 和 **马克斯·普朗克信息学研究所(MPII)** 拥有名为 **gaussian-splatting** 的*软件*的全部所有权。  
+该*软件*正在进行应用程序保护机构(APP)的注册程序。  
 
-The *Software* is still being developed by the *Licensor*.  
+该*软件*仍在由*许可方*开发中。  
 
-*Licensor*'s goal is to allow the research community to use, test and evaluate  
-the *Software*.  
+*许可方*的目标是允许研究社区使用、测试和评估该*软件*。  
 
-## 1.  Definitions  
+## 1. 定义  
 
-*Licensee* means any person or entity that uses the *Software* and distributes  
-its *Work*.  
+*被许可方*指使用*软件*并分发其*作品*的任何个人或实体。  
 
-*Licensor* means the owners of the *Software*, i.e Inria and MPII  
+*许可方*指*软件*的所有者，即 Inria 和 MPII。  
 
-*Software* means the original work of authorship made available under this  
-License ie gaussian-splatting.  
+*软件*指根据本许可证提供的原创作品，即 gaussian-splatting。  
 
-*Work* means the *Software* and any additions to or derivative works of the  
-*Software* that are made available under this License.  
+*作品*指*软件*以及在本许可证下提供的*软件*的任何添加或衍生作品。  
 
+## 2. 目的  
+本许可证旨在定义许可方授予*被许可方*使用*软件*的权利。  
 
-## 2.  Purpose  
-This license is intended to define the rights granted to the *Licensee* by  
-Licensors under the *Software*.  
+## 3. 授予的权利  
 
-## 3.  Rights granted  
+基于上述原因，许可方决定分发该*软件*。  
+许可方向研究用户(包括学术和工业用户)授予免费使用*软件*用于研究目的的非独占权利，不包含再许可权。*软件*只能用于"非商业"目的，即仅用于研究和/或评估目的。  
 
-For the above reasons Licensors have decided to distribute the *Software*.  
-Licensors grant non-exclusive rights to use the *Software* for research purposes  
-to research users (both academic and industrial), free of charge, without right  
-to sublicense.. The *Software* may be used "non-commercially", i.e., for research  
-and/or evaluation purposes only.  
+根据本许可证的条款和条件，您被授予以任何形式复制、准备衍生作品、公开展示、公开执行和分发其*作品*及任何由此产生的衍生作品的非独占、免版税的许可。  
 
-Subject to the terms and conditions of this License, you are granted a  
-non-exclusive, royalty-free, license to reproduce, prepare derivative works of,  
-publicly display, publicly perform and distribute its *Work* and any resulting  
-derivative works in any form.  
+## 4. 限制  
 
-## 4.  Limitations  
+**4.1 再分发。** 您只有在以下情况下才可以复制或分发*作品*：(a)您遵守本许可证，(b)您随分发包含本许可证的完整副本，以及(c)您保留*作品*中存在的任何版权、专利、商标或归属声明，不得修改。  
 
-**4.1 Redistribution.** You may reproduce or distribute the *Work* only if (a) you do  
-so under this License, (b) you include a complete copy of this License with  
-your distribution, and (c) you retain without modification any copyright,  
-patent, trademark, or attribution notices that are present in the *Work*.  
+**4.2 衍生作品。** 您可以为您的*作品*衍生作品的使用、复制和分发指定额外或不同的条款("您的条款")，但前提是：(a)您的条款规定第2节中的使用限制适用于您的衍生作品，并且(b)您指明受您的条款约束的具体衍生作品。尽管有您的条款，本许可证(包括第3.1节中的再分发要求)将继续适用于*作品*本身。  
 
-**4.2 Derivative Works.** You may specify that additional or different terms apply  
-to the use, reproduction, and distribution of your derivative works of the *Work*  
-("Your Terms") only if (a) Your Terms provide that the use limitation in  
-Section 2 applies to your derivative works, and (b) you identify the specific  
-derivative works that are subject to Your Terms. Notwithstanding Your Terms,  
-this License (including the redistribution requirements in Section 3.1) will  
-continue to apply to the *Work* itself.  
+**4.3** 未经许可方事先同意，禁止任何其他使用。研究用户明确承认已从许可方获得所有信息，以评估*软件*与其需求的适当性，并采取所有必要的预防措施来执行和使用它。  
 
-**4.3** Any other use without of prior consent of Licensors is prohibited. Research  
-users explicitly acknowledge having received from Licensors all information  
-allowing to appreciate the adequacy between of the *Software* and their needs and  
-to undertake all necessary precautions for its execution and use.  
+**4.4** 本*软件*以编译库文件和源代码形式提供。如果使用*软件*进行出版或通过使用*软件*获得其他结果，强烈建议用户按照*软件*文档中的说明引用相应的出版物。  
 
-**4.4** The *Software* is provided both as a compiled library file and as source  
-code. In case of using the *Software* for a publication or other results obtained  
-through the use of the *Software*, users are strongly encouraged to cite the  
-corresponding publications as explained in the documentation of the *Software*.  
+## 5. 免责声明  
 
-## 5.  Disclaimer  
-
-THE USER CANNOT USE, EXPLOIT OR DISTRIBUTE THE *SOFTWARE* FOR COMMERCIAL PURPOSES  
-WITHOUT PRIOR AND EXPLICIT CONSENT OF LICENSORS. YOU MUST CONTACT INRIA FOR ANY  
-UNAUTHORIZED USE: stip-sophia.transfert@inria.fr . ANY SUCH ACTION WILL  
-CONSTITUTE A FORGERY. THIS *SOFTWARE* IS PROVIDED "AS IS" WITHOUT ANY WARRANTIES  
-OF ANY NATURE AND ANY EXPRESS OR IMPLIED WARRANTIES, WITH REGARDS TO COMMERCIAL  
-USE, PROFESSIONNAL USE, LEGAL OR NOT, OR OTHER, OR COMMERCIALISATION OR  
-ADAPTATION. UNLESS EXPLICITLY PROVIDED BY LAW, IN NO EVENT, SHALL INRIA OR THE  
-AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR  
-CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE  
-GOODS OR SERVICES, LOSS OF USE, DATA, OR PROFITS OR BUSINESS INTERRUPTION)  
-HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT  
-LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING FROM, OUT OF OR  
-IN CONNECTION WITH THE *SOFTWARE* OR THE USE OR OTHER DEALINGS IN THE *SOFTWARE*.  
+未经许可方事先明确同意，用户不能将*软件*用于商业目的、开发或分发。您必须就任何未经授权的使用联系INRIA：stip-sophia.transfert@inria.fr。任何此类行为都将构成侵权。本*软件*"按原样"提供，不附带任何性质的保证和任何明示或暗示的保证，包括关于商业使用、专业使用、合法与否、或其他方面，或商业化或改编。除非法律明确规定，在任何情况下，INRIA或作者均不对任何直接、间接、偶然、特殊、示范性或后果性损害(包括但不限于采购替代商品或服务、使用损失、数据或利润损失或业务中断)承担责任，无论是基于合同、严格责任还是侵权(包括疏忽或其他)的任何责任理论，这些损害源于*软件*或使用或其他涉及*软件*的交易。  

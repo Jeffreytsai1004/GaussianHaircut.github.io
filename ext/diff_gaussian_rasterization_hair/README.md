@@ -1,10 +1,10 @@
-# Differential Gaussian Rasterization
+# 微分高斯光栅化
 
-Used as the rasterization engine for the paper "3D Gaussian Splatting for Real-Time Rendering of Radiance Fields". If you can make use of it in your own research, please be so kind to cite us.
+作为论文《3D高斯散射用于辐射场的实时渲染》的光栅化引擎。如果您在研究中使用了本项目，请善意地引用我们的工作。
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
+    <h2 class="title">引用格式</h2>
     <pre><code>@Article{kerbl3Dgaussians,
       author       = {Kerbl, Bernhard and Kopanas, Georgios and Leimk{\"u}hler, Thomas and Drettakis, George},
       title        = {3D Gaussian Splatting for Real-Time Radiance Field Rendering},

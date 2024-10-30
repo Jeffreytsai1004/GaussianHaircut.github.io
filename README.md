@@ -1,26 +1,26 @@
-# Gaussian Haircut: Human Hair Reconstruction with Strand-Aligned 3D Gaussians
+# Gaussian Haircut：使用链条对齐的3D高斯分布重建人类头发
 
-[**Paper**](https://arxiv.org/abs/2409.14778) | [**Project Page**](https://eth-ait.github.io/GaussianHaircut/)
+[**论文**](https://arxiv.org/abs/2409.14778) | [**项目主页**](https://eth-ait.github.io/GaussianHaircut/)
 
-This repository contains an official implementation of Gaussian Haircut, a strand-based hair reconstruction approach for monocular videos.
+本仓库包含 Gaussian Haircut 的官方实现，这是一个基于发丝的单目视频头发重建方法。
 
-## Getting started
+## 开始使用
 
-1. **Install CUDA 11.8**
+1. **安装 CUDA 11.8**
 
-   Follow the instructions on https://developer.nvidia.com/cuda-11-8-0-download-archive.
+   按照 https://developer.nvidia.com/cuda-11-8-0-download-archive 的说明进行安装。
 
-   Make sure that
-   - PATH includes <CUDA_DIR>/bin
-   - LD_LIBRARY_PATH includes <CUDA_DIR>/lib64
+   确保：
+   - PATH 包含 <CUDA_DIR>/bin
+   - LD_LIBRARY_PATH 包含 <CUDA_DIR>/lib64
 
-   The environment was tested only with this CUDA version.
+   环境仅在此 CUDA 版本下测试过。
 
-2. **Install Blender 3.6** in order to create strand visualizations
+2. **安装 Blender 3.6** 用于创建发丝可视化
 
-   Follow instructions on https://www.blender.org/download/lts/3-6.
+   按照 https://www.blender.org/download/lts/3-6 的说明进行安装。
 
-3. **Close the repo and run the install script**
+3. **克隆仓库并运行安装脚本**
 
    ```bash
    git clone git@github.com:eth-ait/GaussianHaircut.git
@@ -29,17 +29,17 @@ This repository contains an official implementation of Gaussian Haircut, a stran
    ./install.sh
    ```
 
-## Reconstruction
+## 重建
 
-1. **Record a monocular video**
+1. **录制单目视频**
 
-   Use examples on the project page as references and introduce as little motion blur as possible.
+   参考项目页面上的示例，尽量减少运动模糊。
 
-2. **Setup a directory for the reconstructed scene**
+2. **为重建场景设置目录**
 
-   Put the video file in it and rename it to raw.mp4
+   将视频文件放入其中并重命名为 raw.mp4
 
-3. **Run the script**
+3. **运行脚本**
 
    ```bash
    export PROJECT_DIR="[/path/to/]GaussianHaircut"
@@ -47,15 +47,15 @@ This repository contains an official implementation of Gaussian Haircut, a stran
    DATA_PATH="[path/to/scene/folder]" ./run.sh
    ```
 
-   The script performs data pre-processing, reconstruction, and final visualization using Blender. Use Tensorboard to see intermediate visualizations.
+   该脚本执行数据预处理、重建和使用 Blender 进行最终可视化。使用 Tensorboard 查看中间可视化结果。
 
-## License
+## 许可证
 
-This code is based on the 3D Gaussian Splatting project. For terms and conditions, please refer to LICENSE_3DGS. The rest of the code is distributed under CC BY-NC-SA 4.0.
+本代码基于 3D Gaussian Splatting 项目。有关条款和条件，请参阅 LICENSE_3DGS。其余代码在 CC BY-NC-SA 4.0 许可下分发。
 
-If this code is helpful in your project, cite the papers below.
+如果本代码对您的项目有帮助，请引用以下论文。
 
-## Citation
+## 引用
 
 ```
 @inproceedings{zakharov2024gh,
@@ -66,16 +66,16 @@ If this code is helpful in your project, cite the papers below.
 } 
 ```
 
-## Links
+## 相关链接
 
 - [3D Gaussian Splatting](https://github.com/graphdeco-inria/gaussian-splatting)
 
-- [Neural Haircut](https://github.com/SamsungLabs/NeuralHaircut): FLAME fitting pipeline, strand prior and hairstyle diffusion prior
+- [Neural Haircut](https://github.com/SamsungLabs/NeuralHaircut)：FLAME 拟合流程、发丝先验和发型扩散先验
 
-- [HAAR](https://github.com/Vanessik/HAAR): hair upsampling
+- [HAAR](https://github.com/Vanessik/HAAR)：头发上采样
 
-- [Matte-Anything](https://github.com/hustvl/Matte-Anything): hair and body segmentation
+- [Matte-Anything](https://github.com/hustvl/Matte-Anything)：头发和身体分割
 
-- [PIXIE](https://github.com/yfeng95/PIXIE): initialization for FLAME fitting
+- [PIXIE](https://github.com/yfeng95/PIXIE)：FLAME 拟合的初始化
 
-- [Face-Alignment](https://github.com/1adrianb/face-alignment), [OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose): keypoints detection for FLAME fitting
+- [Face-Alignment](https://github.com/1adrianb/face-alignment), [OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose)：用于 FLAME 拟合的关键点检测
