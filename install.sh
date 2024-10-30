@@ -1,25 +1,25 @@
-# Prerequisites:
+# 先决条件：
 #
-# 1. Install CUDA 11.8
-#    Follow intructions on https://developer.nvidia.com/cuda-11-8-0-download-archive
-#    Make sure that
-#      -   PATH includes <CUDA_DIR>/bin
-#      -   LD_LIBRARY_PATH includes <CUDA_DIR>/lib64
-#    If needed, restart bash environment
+# 1. 安装 CUDA 11.8
+#    按照 https://developer.nvidia.com/cuda-11-8-0-download-archive 上的说明进行安装
+#    确保
+#      -   PATH 包含 <CUDA_DIR>/bin
+#      -   LD_LIBRARY_PATH 包含 <CUDA_DIR>/lib64
+#    如有需要，重新启动 bash 环境
 
-#    The environment was tested only with this CUDA version
+#    环境仅在此 CUDA 版本下测试通过
 
-# 2. Install Blender 3.6 to create strand visualizations
-#    Follow instructions on https://www.blender.org/download/lts/3-6
+# 2. 安装 Blender 3.6 以创建组织可视化
+#    按照 https://www.blender.org/download/lts/3-6 上的说明进行安装
 #
 
-# Need to use this to activate conda environments
+# 使用此命令激活 conda 环境
 eval "$(conda shell.bash hook)"
 
-# Save parent dir
+# 保存父目录
 PROJECT_DIR=$PWD
 
-# Pull all external libraries
+# 拉取所有外部库
 mkdir ext
 cd $PROJECT_DIR/ext && git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose --depth 1
 cd $PROJECT_DIR/ext/openpose && git submodule update --init --recursive --remote
@@ -35,11 +35,11 @@ cd $PROJECT_DIR/ext && git clone --recursive https://github.com/NVIDIAGameWorks/
 cd $PROJECT_DIR/ext/kaolin && git checkout v0.15.0
 cd $PROJECT_DIR/ext && git clone https://github.com/SSL92/hyperIQA
 
-# Install environment
+# 安装环境
 cd $PROJECT_DIR && conda env create -f environment.yml
 conda activate gaussian_splatting_hair
 
-# Download Neural Haircut files
+# 下载 Neural Haircut 文件
 cd $PROJECT_DIR/ext/NeuralHaircut
 gdown --folder https://drive.google.com/drive/folders/1TCdJ0CKR3Q6LviovndOkJaKm8S1T9F_8
 cd $PROJECT_DIR/ext/NeuralHaircut/pretrained_models/diffusion_prior # downloads updated diffusion prior
@@ -54,12 +54,12 @@ cd $PROJECT_DIR
 conda create -y -n matte_anything \
     pytorch=2.0.0 pytorch-cuda=11.8 torchvision tensorboard timm=0.5.4 opencv=4.5.3 \
     mkl=2024.0 setuptools=58.2.0 easydict wget scikit-image gradio=3.46.1 fairscale \
-    -c pytorch -c nvidia -c conda-forge # this worked better than the official installation config
+    -c pytorch -c nvidia -c conda-forge # 这比官方安装配置更有效
 conda deactivate && conda activate matte_anything
 pip install git+https://github.com/facebookresearch/segment-anything.git
 python -m pip install 'git+https://github.com/facebookresearch/detectron2.git'
 cd $PROJECT_DIR/ext/Matte-Anything/GroundingDINO && pip install -e .
-pip install supervision==0.22.0 # fixes the GroundingDINO error
+pip install supervision==0.22.0 # 修复 GroundingDINO 错误
 cd $PROJECT_DIR/ext/Matte-Anything && mkdir pretrained
 cd $PROJECT_DIR/ext/Matte-Anything/pretrained
 wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
@@ -69,12 +69,12 @@ gdown 1d97oKuITCeWgai2Tf3iNilt6rMSSYzkW
 
 # OpenPose
 cd $PROJECT_DIR/ext/openpose
-gdown 1Yn03cKKfVOq4qXmgBMQD20UMRRRkd_tV && tar -xvzf models.tar.gz && rm models.tar.gz # downloads openpose checkpoint
+gdown 1Yn03cKKfVOq4qXmgBMQD20UMRRRkd_tV && tar -xvzf models.tar.gz && rm models.tar.gz # 下载 openpose 检查点
 conda deactivate
 git submodule update --init --recursive --remote
-conda create -y -n openpose cmake=3.20 -c conda-forge # needed to avoid cmake complining error
+conda create -y -n openpose cmake=3.20 -c conda-forge # 需要避免 cmake 错误
 conda activate openpose
-sudo apt install libopencv-dev # installation instructions are from EasyMocap, in case of problems refer to the official OpenPose docs
+sudo apt install libopencv-dev # 安装说明来自 EasyMocap，如有问题，请参考官方 OpenPose 文档
 sudo apt install protobuf-compiler libgoogle-glog-dev
 sudo apt install libboost-all-dev libhdf5-dev libatlas-base-dev
 mkdir build
@@ -89,7 +89,7 @@ cd $PROJECT_DIR/ext/PIXIE
 chmod +x fetch_model.sh && ./fetch_model.sh
 conda create -y -n pixie-env python=3.8 pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 \
     pytorch-cuda=11.8 fvcore pytorch3d==0.7.5 kornia matplotlib \
-    -c pytorch -c nvidia -c fvcore -c conda-forge -c pytorch3d # this environment works with RTX 4090
+    -c pytorch -c nvidia -c fvcore -c conda-forge -c pytorch3d # 此环境适用于 RTX 4090
 conda activate pixie-env
 pip install pyyaml==5.4.1
-pip install git+https://github.com/1adrianb/face-alignment.git@54623537fd9618ca7c15688fd85aba706ad92b59 # install this commit to avoid error
+pip install git+https://github.com/1adrianb/face-alignment.git@54623537fd9618ca7c15688fd85aba706ad92b59 # 安装此提交以避免错误
