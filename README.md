@@ -1,4 +1,4 @@
-# Gaussian Haircut：使用链条对齐的3D高斯分布重建人类头发
+﻿# Gaussian Haircut：使用链条对齐的3D高斯分布重建人类头发
 
 [**论文**](https://arxiv.org/abs/2409.14778) | [**项目主页**](https://eth-ait.github.io/GaussianHaircut/)
 

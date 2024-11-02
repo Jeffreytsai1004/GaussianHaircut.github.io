@@ -1,4 +1,4 @@
-export GPU="0"
+﻿export GPU="0"
 export CAMERA="PINHOLE"
 export EXP_NAME_1="stage1"
 export EXP_NAME_2="stage2"

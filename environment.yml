@@ -1,4 +1,4 @@
-name: gaussian_splatting_hair
+﻿name: gaussian_splatting_hair
 channels:
   - pytorch
   - conda-forge
