@@ -1,3 +1,18 @@
+# OpenCV dependencies for Windows
+opencv-python
+opencv-contrib-python
+
+# OpenPose dependencies
+protobuf
+boost-python
+hdf5
+
+# Other system dependencies
+cmake
+ninja
+vcpkg
+
+# Python packages
 setuptools==69.5.1
 gcc==10.4.0
 gxx==10.4.0
@@ -19,14 +34,43 @@ tqdm==4.66.5
 gdown==5.2.0
 colmap==3.10
 
+# Additional dependencies
 pysdf==0.1.9
 clean-fid==0.1.35
 face-alignment==1.4.1
 clip==0.2.0
 resize-right==0.0.2
-ext/pytorch3d
-ext/NeuralHaircut/npbgpp
-ext/simple-knn
-ext/diff_gaussian_rasterization_hair
-ext/kaolin
-gdown==5.2.0
+
+# Local packages
+./ext/pytorch3d
+./ext/NeuralHaircut/npbgpp
+./ext/simple-knn
+./ext/diff_gaussian_rasterization_hair
+./ext/kaolin
+
+# Matte-Anything dependencies
+tensorboard
+timm
+opencv-python
+mkl
+easydict
+wget
+scikit-image
+gradio
+fairscale
+git+https://github.com/facebookresearch/segment-anything.git
+git+https://github.com/facebookresearch/detectron2.git
+supervision
+
+# PIXIE dependencies
+fvcore
+pytorch3d>=0.7.5
+kornia
+matplotlib
+pyyaml>=5.4.1
+git+https://github.com/1adrianb/face-alignment.git@54623537fd9618ca7c15688fd85aba706ad92b59
+
+
+
+
+
