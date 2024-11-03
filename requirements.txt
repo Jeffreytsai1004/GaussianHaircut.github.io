@@ -23,8 +23,6 @@ pysdf==0.1.9
 clean-fid==0.1.35
 face-alignment==1.4.1
 clip==0.2.0
-torchdiffeq==0.2.3
-torchsde==0.2.5
 resize-right==0.0.2
 ext/pytorch3d
 ext/NeuralHaircut/npbgpp

@@ -30,7 +30,7 @@ CALL "%~dp0micromamba.exe" create -n gaussian_splatting_hair_001 python==3.10.14
 @CALL cd %PROJECT_DIR%/ext && git clone https://github.com/SSL92/hyperIQA
 
 @REM Install PyTorch and other dependencies
-@CALL pip install torch==2.1.1+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 --no-cache-dir
+@CALL pip install torch==2.1.1+cu118 torchvision torchaudio torchdiffeq torchsde --index-url https://download.pytorch.org/whl/cu118 --no-cache-dir
 @CALL pip install -r requirements.txt
 
 @REM Download the Neural Haircut files
