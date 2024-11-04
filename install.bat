@@ -2,6 +2,7 @@
 @CALL "%~dp0micromamba.exe" create -n gaussian_splatting_hair python==3.10.14 git==2.41.0 git-lfs==3.2.0 -c pytorch -c conda-forge -c defaults -c anaconda -c fvcore -c iopath -c bottler -c nvidia -r "%~dp0\" -y
 @CALL "%~dp0micromamba.exe" shell init --shell cmd.exe --prefix "%~dp0\"
 @CALL condabin\micromamba.bat activate gaussian_splatting_hair
+
 @REM 设置环境变量
 @CALL SET ROOT_DIR=%~dp0
 @CALL SET PROJECT_DIR=%ROOT_DIR%GaussianHaircut
@@ -13,6 +14,7 @@
 
 @REM 克隆主仓库
 @CALL mkdir %PROJECT_DIR%
+@CALL git config --global http.postBuffer 524288000
 @CALL git clone https://github.com/eth-ait/GaussianHaircut.git %PROJECT_DIR%
 @REM 拉取所有外部库
 @CALL mkdir %PROJECT_DIR%\ext
