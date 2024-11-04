@@ -1,16 +1,21 @@
 @ECHO OFF
 SETLOCAL EnableDelayedExpansion
+@CALL SET ROOT_DIR=%~dp0
+@CALL SET micromamba=%ROOT_DIR%micromamba.exe
 
-@CALL SET micromamba=%~dp0micromamba.exe
-@CALL %micromamba% shell init --shell cmd.exe --prefix "%~dp0\"
+@CALL "%micromamba%" shell init --shell cmd.exe --prefix "%ROOT_DIR%"
+@IF %ERRORLEVEL% NEQ 0 (
+    @ECHO Error: Failed to initialize micromamba
+    @EXIT /B 1
+)
 
 @CALL %micromamba% create -n gaussianhaircut_base python==3.10.14 git==2.41.0 git-lfs==3.2.0 -c conda-forge -r "%~dp0\" -y
 @IF %ERRORLEVEL% NEQ 0 (
     @ECHO Error: Failed to create base environment
     @EXIT /B 1
 )
-@CALL %micromamba% activate gaussianhaircut_base
 @CALL git config --global http.postBuffer 524288000
+@CALL %micromamba% activate gaussianhaircut_base
 @CALL SET ROOT_DIR=%~dp0
 @CALL SET PROJECT_DIR=%ROOT_DIR%GaussianHaircut
 @CALL SET BLENDER_DIR="C:\Program Files\Blender Foundation\Blender 3.6\"
@@ -49,7 +54,6 @@ SETLOCAL EnableDelayedExpansion
     @EXIT /B 1
 )
 @CALL %micromamba% activate gaussian_splatting_hair
-@CALL git config --global http.postBuffer 524288000
 @CALL SET ROOT_DIR=%~dp0
 @CALL SET PROJECT_DIR=%ROOT_DIR%GaussianHaircut
 @CALL SET BLENDER_DIR="C:\Program Files\Blender Foundation\Blender 3.6\"
@@ -72,7 +76,6 @@ SETLOCAL EnableDelayedExpansion
     @EXIT /B 1
 )
 @CALL %micromamba% activate matte_anything
-@CALL git config --global http.postBuffer 524288000
 @CALL SET ROOT_DIR=%~dp0
 @CALL SET PROJECT_DIR=%ROOT_DIR%GaussianHaircut
 @CALL SET BLENDER_DIR="C:\Program Files\Blender Foundation\Blender 3.6\"
@@ -105,7 +108,6 @@ SETLOCAL EnableDelayedExpansion
 )
 @CALL %micromamba% activate openpose
 @CALL git submodule update --init --recursive --remote
-@CALL git config --global http.postBuffer 524288000
 @CALL SET ROOT_DIR=%~dp0
 @CALL SET PROJECT_DIR=%ROOT_DIR%GaussianHaircut
 @CALL SET BLENDER_DIR="C:\Program Files\Blender Foundation\Blender 3.6\"
