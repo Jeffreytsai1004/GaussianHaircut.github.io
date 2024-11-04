@@ -12,9 +12,6 @@
 @CALL mkdir %PROJECT_DIR%
 @CALL git clone https://github.com/eth-ait/GaussianHaircut.git %PROJECT_DIR%
 
-@CALL cd %ROOT_DIR%
-@CALL pip install -r requirements.txt
-
 @REM 拉取所有外部库
 @CALL mkdir ext
 @CALL cd %PROJECT_DIR%\ext && git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose --depth 1
@@ -30,6 +27,10 @@
 @CALL cd %PROJECT_DIR%\ext && git clone --recursive https://github.com/NVIDIAGameWorks/kaolin
 @CALL cd %PROJECT_DIR%\ext\kaolin && git checkout v0.15.0
 @CALL cd %PROJECT_DIR%\ext && git clone https://github.com/SSL92/hyperIQA
+
+@REM 安装 Python 依赖
+@CALL cd %ROOT_DIR%
+@CALL pip install -r requirements.txt
 
 @REM 下载 Neural Haircut 文件
 @CALL curl -L "https://drive.usercontent.google.com/download?id=1OBR0Vzb_w5SNc1jmoScA6L8SqVniJGOr" -o %PROJECT_DIR%\ext\NeuralHaircut\pretrained_models\diffusion_prior\dif_ckpt.pth
