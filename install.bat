@@ -18,23 +18,25 @@
 @CALL git clone https://github.com/eth-ait/GaussianHaircut.git %PROJECT_DIR%
 @REM 拉取所有外部库
 @CALL mkdir %PROJECT_DIR%\ext
-@CALL cd %PROJECT_DIR%\ext && git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose --depth 1
-@CALL cd %OPENPOSE_DIR% && git submodule update --init --recursive --remote
-@CALL cd %PROJECT_DIR%\ext && git clone https://github.com/hustvl/Matte-Anything
-@CALL cd %MATTE_ANYTHING_DIR% && git clone https://github.com/IDEA-Research/GroundingDINO.git
-@CALL cd %PROJECT_DIR%\ext && git clone git@github.com:egorzakharov/NeuralHaircut.git --recursive
-@CALL cd %PROJECT_DIR%\ext && git clone https://github.com/facebookresearch/pytorch3d
+@CALL git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose %PROJECT_DIR%\ext\openpose --depth 1
+@CALL cd %PROJECT_DIR%\ext\openpose && git submodule update --init --recursive --remote
+@CALL git clone https://github.com/hustvl/Matte-Anything %PROJECT_DIR%\ext\Matte-Anything
+@CALL git clone https://github.com/IDEA-Research/GroundingDINO.git %MATTE_ANYTHING_DIR%\GroundingDINO
+@CALL git clone git@github.com:egorzakharov/NeuralHaircut.git --recursive %PROJECT_DIR%\ext\NeuralHaircut
+@CALL git clone https://github.com/facebookresearch/pytorch3d %PROJECT_DIR%\ext\pytorch3d
 @CALL cd %PROJECT_DIR%\ext\pytorch3d && git checkout 2f11ddc5ee7d6bd56f2fb6744a16776fab6536f7
-@CALL cd %PROJECT_DIR%\ext && git clone https://github.com/camenduru/simple-knn
-@CALL cd %PROJECT_DIR%\ext\diff_gaussian_rasterization_hair\third_party && git clone https://github.com/g-truc/glm
+@CALL git clone https://github.com/camenduru/simple-knn %PROJECT_DIR%\ext\simple-knn
+@CALL git clone https://github.com/g-truc/glm %PROJECT_DIR%\ext\diff_gaussian_rasterization_hair\third_party\glm
 @CALL cd %PROJECT_DIR%\ext\diff_gaussian_rasterization_hair\third_party\glm && git checkout 5c46b9c07008ae65cb81ab79cd677ecc1934b903
-@CALL cd %PROJECT_DIR%\ext && git clone --recursive https://github.com/NVIDIAGameWorks/kaolin
+@CALL git clone --recursive https://github.com/NVIDIAGameWorks/kaolin %PROJECT_DIR%\ext\kaolin
 @CALL cd %PROJECT_DIR%\ext\kaolin && git checkout v0.15.0
-@CALL cd %PROJECT_DIR%\ext && git clone https://github.com/SSL92/hyperIQA
-@CALL cd %PROJECT_DIR%\ext && git clone https://github.com/yfeng95/PIXIE
+@CALL git clone https://github.com/SSL92/hyperIQA %PROJECT_DIR%\ext\hyperIQA
+@CALL git clone https://github.com/yfeng95/PIXIE %PROJECT_DIR%\ext\PIXIE
+
 @REM 安装 Python 依赖
 @CALL cd %ROOT_DIR%
 @CALL pip install -r requirements.txt
+
 @REM 下载 Neural Haircut 文件
 @CALL curl -L "https://drive.usercontent.google.com/download?id=1OBR0Vzb_w5SNc1jmoScA6L8SqVniJGOr" -o %PROJECT_DIR%\ext\NeuralHaircut\pretrained_models\diffusion_prior\dif_ckpt.pth
 @CALL curl -L "https://drive.usercontent.google.com/download?id=1DESwUb-nsmi38VCDvnBwpd9kjcWONNT6" -o %PROJECT_DIR%\ext\NeuralHaircut\pretrained_models\strand_prior\strand_ckpt.pth
