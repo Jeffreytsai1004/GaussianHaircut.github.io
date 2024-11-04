@@ -13,7 +13,7 @@
 @CALL git clone https://github.com/eth-ait/GaussianHaircut.git %PROJECT_DIR%
 
 @REM 拉取所有外部库
-@CALL mkdir ext
+@CALL mkdir %PROJECT_DIR%\ext
 @CALL cd %PROJECT_DIR%\ext && git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose --depth 1
 @CALL cd %PROJECT_DIR%\ext\openpose && git submodule update --init --recursive --remote
 @CALL cd %PROJECT_DIR%\ext && git clone https://github.com/hustvl/Matte-Anything
@@ -39,11 +39,12 @@
 @CALL cd %PROJECT_DIR%\ext\NeuralHaircut\PIXIE && tar -xvzf pixie_data.tar.gz && del pixie_data.tar.gz
 @CALL curl -L "https://drive.google.com/uc?export=download&id=1OOUmnbvpGea0LIGpIWEbOyxfWx6UCiiE" -o %PROJECT_DIR%\ext\hyperIQA\pretrained\koniq_pretrained.pkl
 @CALL cd %PROJECT_DIR%
+@CALL condabin\micromamba.bat deactivate
 
 @REM Matte-Anything
-@CALL condabin\micromamba.bat deactivate
+@CALL cd %PROJECT_DIR%\ext\Matte-Anything
 @REM 创建 Matte-Anything 环境
-@CALL "%~dp0micromamba.exe" create -n matte_anything python==3.10.14 git==2.41.0 git-lfs==3.2.0 pytorch=2.0.0 pytorch-cuda=11.8 torchvision tensorboard timm=0.5.4 opencv=4.5.3 mkl=2024.0 setuptools=58.2.0 easydict wget scikit-image gradio=3.46.1 fairscale -c pytorch -c nvidia -c conda-forge -r "%~dp0\" -y
+@CALL "%~dp0micromamba.exe" create -n matte_anything python==3.10.14 git==2.41.0 git-lfs==3.2.0 pytorch=2.0.0 pytorch-cuda=11.8 torchvision tensorboard timm=0.5.4 opencv=4.5.3 mkl=2024.0 setuptools=58.2.0 easydict wget scikit-image gradio=3.46.1 fairscale -c pytorch -c nvidia -c conda-forge -r "%PROJECT_DIR%\ext\Matte-Anything\" -y
 @CALL condabin\micromamba.bat activate matte_anything
 @CALL pip install git+https://github.com/facebookresearch/segment-anything.git
 @CALL pip install 'git+https://github.com/facebookresearch/detectron2.git'
@@ -54,9 +55,9 @@
 @CALL cd %PROJECT_DIR%\ext\Matte-Anything\pretrained
 @CALL curl -L "https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth" -o %PROJECT_DIR%\ext\Matte-Anything\pretrained\sam_vit_h_4b8939.pth
 @CALL curl -L "https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth" -o %PROJECT_DIR%\ext\Matte-Anything\pretrained\groundingdino_swint_ogc.pth
-@CALL condabin\micromamba.bat deactivate
-@CALL condabin\micromamba.bat activate gaussian_splatting_hair
 @CALL curl -L "https://drive.usercontent.google.com/download?id=1d97oKuITCeWgai2Tf3iNilt6rMSSYzkW" -o %PROJECT_DIR%\ext\Matte-Anything\pretrained\ViTMatte_B_DIS.pth
+@CALL cd %PROJECT_DIR%
+@CALL condabin\micromamba.bat deactivate
 
 @REM OpenPose
 @CALL cd %PROJECT_DIR%\ext\openpose
@@ -67,7 +68,7 @@
 @CALL del %PROJECT_DIR%\ext\openpose\models.tar.gz
 @CALL git submodule update --init --recursive --remote
 @REM 创建 OpenPose 环境
-@CALL "%~dp0micromamba.exe" create -n openpose python==3.10.14 git==2.41.0 git-lfs==3.2.0 cmake=3.20 make -c conda-forge -r "%~dp0\" -y
+@CALL "%~dp0micromamba.exe" create -n openpose python==3.10.14 git==2.41.0 git-lfs==3.2.0 cmake=3.20 make -c conda-forge -r "%PROJECT_DIR%\ext\openpose\" -y
 @CALL condabin\micromamba.bat activate openpose
 @REM 安装 OpenCV 依赖
 @CALL pip install opencv-python opencv-contrib-python -i https://pypi.tuna.tsinghua.edu.cn/simple
@@ -79,14 +80,11 @@
 @CALL condabin\micromamba.bat deactivate
 
 @REM PIXIE
-@CALL cd %PROJECT_DIR%\ext
-@CALL git clone https://github.com/yfeng95/PIXIE
+@CALL git clone https://github.com/yfeng95/PIXIE %PROJECT_DIR%\ext\PIXIE
 @CALL copy %ROOT_DIR%\fetch_model.bat %PROJECT_DIR%\ext\PIXIE\fetch_model.bat
 @CALL %PROJECT_DIR%\ext\PIXIE\fetch_model.bat
 @CALL cd %PROJECT_DIR%\ext\PIXIE
-@CALL "%~dp0micromamba.exe" create -n pixie_env python==3.8 pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 \
-    pytorch-cuda=11.8 fvcore pytorch3d==0.7.5 kornia matplotlib \
-    -c pytorch -c nvidia -c fvcore -c conda-forge -c pytorch3d
+@CALL "%~dp0micromamba.exe" create -n pixie_env python==3.8 pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 pytorch-cuda=11.8 fvcore pytorch3d==0.7.5 kornia matplotlib -c pytorch -c nvidia -c fvcore -c conda-forge -c pytorch3d -r "%PROJECT_DIR%\ext\PIXIE\" -y
 @CALL condabin\micromamba.bat activate pixie_env
 @CALL pip install pyyaml==5.4.1
 @CALL pip install git+https://github.com/1adrianb/face-alignment.git@54623537fd9618ca7c15688fd85aba706ad92b59
