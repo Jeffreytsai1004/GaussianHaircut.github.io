@@ -20,13 +20,16 @@
 
    请按照 https://www.blender.org/download/lts/3-6 上的说明进行操作。
 
-3. **安装 make** 
+3. **安装 7zip** 
+   请按照 https://www.7-zip.org/ 上的说明进行操作。
+
+4. **安装 make** 
    请按照 [在windows系统下安装make编译功能](https://gitcode.csdn.net/66c5892f13e4054e7e7c5b5f.html?dp_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTU1MTc4LCJleHAiOjE3MzEzMDA3MTAsImlhdCI6MTczMDY5NTkxMCwidXNlcm5hbWUiOiJxcV8yMTQ5NzU5OSJ9.i1QYIwQxn1gK3lj-N5AJvM50jhaxOImkp2QYs_qIwd8&spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromBaidu~activity-1-128243761-blog-131262178.235%5Ev43%5Epc_blog_bottom_relevance_base1&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromBaidu~activity-1-128243761-blog-131262178.235%5Ev43%5Epc_blog_bottom_relevance_base1&utm_relevant_index=1) 上的说明进行操作。
 
-4. **安装 CMake** 
+5. **安装 CMake** 
    请按照 [Windows下CMake安装教程](https://blog.csdn.net/u011231598/article/details/80338941) 上的说明进行操作。
 
-5. **安装 VisualStudio 2022** 
+6. **安装 VisualStudio 2022** 
    请按照 [Visual Studio 2022安装与使用教程](https://blog.csdn.net/InnerPeaceHQ/article/details/121716088?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522644F7F84-8517-4A35-A46E-9BC4FEE1C4DB%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=644F7F84-8517-4A35-A46E-9BC4FEE1C4DB&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-1-121716088-null-null.142^v100^pc_search_result_base9&utm_term=Windows%E5%AE%89%E8%A3%85VisualStudio2022&spm=1018.2226.3001.4187) 上的说明进行操作。
 
 6. **修改变量：**

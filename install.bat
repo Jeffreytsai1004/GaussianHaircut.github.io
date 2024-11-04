@@ -62,8 +62,9 @@
 @CALL cd %PROJECT_DIR%\ext\openpose
 @REM 下载 OpenPose 模型
 @CALL curl -L "https://drive.usercontent.google.com/download?id=1Yn03cKKfVOq4qXmgBMQD20UMRRRkd_tV" -o %PROJECT_DIR%\ext\openpose\models.tar.gz
-@CALL tar -xvzf models.tar.gz
-@CALL del models.tar.gz
+@REM 解压模型
+@CALL 7z x %PROJECT_DIR%\ext\openpose\models.tar.gz -o%PROJECT_DIR%\ext\openpose\
+@CALL del %PROJECT_DIR%\ext\openpose\models.tar.gz
 @CALL git submodule update --init --recursive --remote
 @REM 创建 OpenPose 环境
 @CALL "%~dp0micromamba.exe" create -n openpose python==3.10.14 git==2.41.0 git-lfs==3.2.0 cmake=3.20 make -c conda-forge -r "%~dp0\" -y
@@ -78,14 +79,16 @@
 @CALL condabin\micromamba.bat deactivate
 
 @REM PIXIE
-@CALL cd %PROJECT_DIR%\ext && git clone https://github.com/yfeng95/PIXIE
-@CALL cd %PROJECT_DIR%\ext\PIXIE
+@CALL cd %PROJECT_DIR%\ext
+@CALL git clone https://github.com/yfeng95/PIXIE
 @CALL copy %ROOT_DIR%\fetch_model.bat %PROJECT_DIR%\ext\PIXIE\fetch_model.bat
 @CALL %PROJECT_DIR%\ext\PIXIE\fetch_model.bat
+@CALL cd %PROJECT_DIR%\ext\PIXIE
 @CALL "%~dp0micromamba.exe" create -n pixie_env python==3.8 pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 \
     pytorch-cuda=11.8 fvcore pytorch3d==0.7.5 kornia matplotlib \
     -c pytorch -c nvidia -c fvcore -c conda-forge -c pytorch3d
 @CALL condabin\micromamba.bat activate pixie_env
 @CALL pip install pyyaml==5.4.1
 @CALL pip install git+https://github.com/1adrianb/face-alignment.git@54623537fd9618ca7c15688fd85aba706ad92b59
+@CALL cd %PROJECT_DIR%
 @CALL condabin\micromamba.bat deactivate
