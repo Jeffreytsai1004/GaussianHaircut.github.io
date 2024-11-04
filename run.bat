@@ -1,7 +1,7 @@
 @CALL "%~dp0micromamba.exe" shell init --shell cmd.exe --prefix "%~dp0\"
 @CALL SET ROOT_DIR=%~dp0
 @CALL SET PROJECT_DIR=%ROOT_DIR%GaussianHaircut
-@CALL SET BLENDER_DIR=C:\Program Files\Blender Foundation\Blender 3.6\
+@CALL SET BLENDER_DIR="C:\Program Files\Blender Foundation\Blender 3.6\"
 @CALL SET DATA_PATH=%PROJECT_DIR%\data\raw
 @CALL SET GPU=0
 @CALL SET CAMERA=PINHOLE

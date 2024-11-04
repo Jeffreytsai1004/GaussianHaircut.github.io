@@ -6,7 +6,7 @@
 @REM 设置环境变量
 @CALL SET ROOT_DIR=%~dp0
 @CALL SET PROJECT_DIR=%ROOT_DIR%GaussianHaircut
-@CALL SET BLENDER_DIR=C:\Program Files\Blender Foundation\Blender 3.6\
+@CALL SET BLENDER_DIR="C:\Program Files\Blender Foundation\Blender 3.6\"
 
 @REM 克隆主仓库
 @CALL mkdir %PROJECT_DIR%

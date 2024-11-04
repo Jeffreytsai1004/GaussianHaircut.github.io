@@ -29,6 +29,16 @@
 5. **安装 VisualStudio 2022** 
    请按照 [Visual Studio 2022安装与使用教程](https://blog.csdn.net/InnerPeaceHQ/article/details/121716088?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522644F7F84-8517-4A35-A46E-9BC4FEE1C4DB%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=644F7F84-8517-4A35-A46E-9BC4FEE1C4DB&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-1-121716088-null-null.142^v100^pc_search_result_base9&utm_term=Windows%E5%AE%89%E8%A3%85VisualStudio2022&spm=1018.2226.3001.4187) 上的说明进行操作。
 
+6. **修改变量：**
+    修改install.bat & run.bat变量如
+    ```bash
+    @CALL SET ROOT_DIR=%~dp0
+    @CALL SET PROJECT_DIR=%ROOT_DIR%GaussianHaircut
+    @CALL SET BLENDER_DIR="C:\Program Files\Blender Foundation\Blender 3.6\"
+    @CALL SET DATA_PATH=%PROJECT_DIR%\data\raw
+    ```
+   该脚本执行数据预处理、重建和使用 Blender 的最终可视化。使用 Tensorboard 查看中间可视化。
+
 6. **部署项目**
 
    ```bash
@@ -38,23 +48,14 @@
 
 ## 重建
 
-1. **录制单目视频**
+7. **设置项目素材文件：**
+    使用项目页面上的示例作为参考，并尽量减少运动模糊。
+    将视频文件放入该目录并重命名为 raw.mp4, 例如：[该文件夹路径]\data\raw\raw.mp4
 
-   使用项目页面上的示例作为参考，并尽量减少运动模糊。
-
-2. **为重建场景设置目录**
-
-   将视频文件放入该目录并重命名为 raw.mp4。
-
-3. **运行脚本**
-
+8. **运行项目**
    ```bash
-   export PROJECT_DIR="[/path/to/]GaussianHaircut"
-   export BLENDER_DIR="[/path/to/blender/folder/]blender"
-   DATA_PATH="[path/to/scene/folder]" ./run.sh
+   run.bat
    ```
-
-   该脚本执行数据预处理、重建和使用 Blender 的最终可视化。使用 Tensorboard 查看中间可视化。
 
 ## 许可证
 
