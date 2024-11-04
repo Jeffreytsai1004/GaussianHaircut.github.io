@@ -1,3 +1,6 @@
+@ECHO OFF
+SETLOCAL EnableDelayedExpansion
+
 @CALL SET "ROOT_DIR=%~dp0"
 @CALL SET "ROOT_DIR=%ROOT_DIR:~0,-1%"
 @CALL SET "micromamba=%ROOT_DIR%\micromamba.exe"
