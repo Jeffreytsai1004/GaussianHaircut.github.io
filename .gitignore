@@ -4,3 +4,6 @@
 /pkgs
 /GaussianHaircut
 /Scripts
+run.sh
+install.sh
+environment.yml

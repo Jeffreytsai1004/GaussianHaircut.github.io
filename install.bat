@@ -62,19 +62,18 @@
 @CALL cd %PROJECT_DIR%\ext\openpose
 @REM 下载 OpenPose 模型
 @CALL curl -L "https://drive.usercontent.google.com/download?id=1Yn03cKKfVOq4qXmgBMQD20UMRRRkd_tV" -o %PROJECT_DIR%\ext\openpose\models.tar.gz
-@CALL condabin\micromamba.bat deactivate
 @CALL tar -xvzf models.tar.gz
 @CALL del models.tar.gz
 @CALL git submodule update --init --recursive --remote
 @REM 创建 OpenPose 环境
-@CALL "%~dp0micromamba.exe" create -n openpose python==3.10.14 git==2.41.0 git-lfs==3.2.0 cmake=3.20 -c conda-forge -r "%~dp0\" -y
+@CALL "%~dp0micromamba.exe" create -n openpose python==3.10.14 git==2.41.0 git-lfs==3.2.0 cmake=3.20 make -c conda-forge -r "%~dp0\" -y
 @CALL condabin\micromamba.bat activate openpose
 @REM 安装 OpenCV 依赖
-@CALL pip install -i https://pypi.tuna.tsinghua.edu.cn/simple opencv-python
+@CALL pip install opencv-python opencv-contrib-python -i https://pypi.tuna.tsinghua.edu.cn/simple
 @CALL mkdir build
 @CALL cd build
-@CALL cmake .. -G "Visual Studio 17 2022" -A x64 -DBUILD_PYTHON=ON -DUSE_CUDNN=OFF
-@CALL MSBuild OpenPose.sln /p:Configuration=Release /m
+@CALL cmake .. -G "Unix Makefiles" -DBUILD_PYTHON=ON -DUSE_CUDNN=OFF
+@CALL make -j8
 @CALL cd %PROJECT_DIR%
 @CALL condabin\micromamba.bat deactivate
 
