@@ -37,6 +37,13 @@
 @CALL cd %ROOT_DIR%
 @CALL pip install -r requirements.txt
 
+@REM 安装 Python 包
+@CALL pip install %PROJECT_DIR%\ext\pytorch3d
+@CALL pip install %PROJECT_DIR%\ext\NeuralHaircut\npbgpp
+@CALL pip install %PROJECT_DIR%\ext\simple-knn
+@CALL pip install %PROJECT_DIR%\ext\diff_gaussian_rasterization_hair
+@CALL pip install %PROJECT_DIR%\ext\kaolin
+
 @REM 下载 Neural Haircut 文件
 @CALL curl -L "https://drive.usercontent.google.com/download?id=1OBR0Vzb_w5SNc1jmoScA6L8SqVniJGOr" -o %PROJECT_DIR%\ext\NeuralHaircut\pretrained_models\diffusion_prior\dif_ckpt.pth
 @CALL curl -L "https://drive.usercontent.google.com/download?id=1DESwUb-nsmi38VCDvnBwpd9kjcWONNT6" -o %PROJECT_DIR%\ext\NeuralHaircut\pretrained_models\strand_prior\strand_ckpt.pth
@@ -59,7 +66,7 @@
 @CALL SET PIXIE_DIR=%PROJECT_DIR%\ext\PIXIE
 @CALL SET DATA_PATH=%PROJECT_DIR%\data\raw
 @CALL pip install git+https://github.com/facebookresearch/segment-anything.git
-@CALL pip install 'git+https://github.com/facebookresearch/detectron2.git'
+@CALL pip install git+https://github.com/facebookresearch/detectron2.git
 @CALL cd %MATTE_ANYTHING_DIR%\GroundingDINO && pip install -e .
 @REM 修复 GroundingDINO 错误
 @CALL pip install supervision==0.22.0

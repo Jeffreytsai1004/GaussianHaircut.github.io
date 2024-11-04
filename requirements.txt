@@ -31,13 +31,6 @@ face-alignment>=1.4.1
 clip>=0.2.0
 resize-right>=0.0.2
 
-# Local packages
-./ext/pytorch3d
-./ext/NeuralHaircut/npbgpp
-./ext/simple-knn
-./ext/diff_gaussian_rasterization_hair
-./ext/kaolin
-
 
 
 
