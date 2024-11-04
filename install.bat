@@ -7,8 +7,8 @@ SET ROOT_DIR=%ROOT_DIR:~0,-1%
 SET micromamba=%ROOT_DIR%\micromamba.exe
 
 @REM CREATE BASE ENVIRONMENT
-@CALL %micromamba% create -n gaussianhaircut_base python==3.10.14 git==2.41.0 git-lfs==3.2.0 -c conda-forge -r "%ROOT_DIR%" -y || (@ECHO Error: Failed to create base environment && EXIT /B 1)
-@CALL "%micromamba%" shell init --shell cmd.exe --prefix "%ROOT_DIR%"
+@CALL %micromamba% create -n gaussianhaircut_base python==3.10.14 git==2.41.0 git-lfs==3.2.0 -c conda-forge -r "%~dp0\" -y || (@ECHO Error: Failed to create base environment && EXIT /B 1)
+@CALL %micromamba% shell init --shell cmd.exe --prefix "%~dp0\"
 @CALL %micromamba% activate gaussianhaircut_base
 @CALL SET PROJECT_DIR=%ROOT_DIR%\GaussianHaircut
 @CALL SET BLENDER_DIR="C:\Program Files\Blender Foundation\Blender 3.6\"
@@ -41,7 +41,7 @@ SET micromamba=%ROOT_DIR%\micromamba.exe
 @CALL %micromamba% deactivate
 
 @REM GAUSSIAN SPLATTING HAIR
-@CALL %micromamba% create -n gaussian_splatting_hair python==3.10.14 git==2.41.0 git-lfs==3.2.0 -c pytorch -c conda-forge -c defaults -c anaconda -c fvcore -c iopath -c bottler -c nvidia -r "%ROOT_DIR%" -y || (@ECHO Error: Failed to create gaussian_splatting_hair environment && EXIT /B 1)
+@CALL %micromamba% create -n gaussian_splatting_hair python==3.10.14 git==2.41.0 git-lfs==3.2.0 -c pytorch -c conda-forge -c defaults -c anaconda -c fvcore -c iopath -c bottler -c nvidia -r "%~dp0\" -y || (@ECHO Error: Failed to create gaussian_splatting_hair environment && EXIT /B 1)
 @CALL %micromamba% activate gaussian_splatting_hair
 @CALL SET PROJECT_DIR=%ROOT_DIR%\GaussianHaircut
 @CALL SET BLENDER_DIR="C:\Program Files\Blender Foundation\Blender 3.6\"
@@ -85,7 +85,7 @@ SET micromamba=%ROOT_DIR%\micromamba.exe
 @CALL %micromamba% deactivate
 
 @REM OPENPOSE
-@CALL %micromamba% create -n openpose python==3.10.14 git==2.41.0 git-lfs==3.2.0 cmake=3.20 opencv-python protobuf glog boost h5py numpy make -c conda-forge -r "%ROOT_DIR%" -y || (@ECHO Error: Failed to create openpose environment && EXIT /B 1)
+@CALL %micromamba% create -n openpose python==3.10.14 git==2.41.0 git-lfs==3.2.0 cmake=3.20 opencv-python protobuf glog boost h5py numpy make -c conda-forge -r "%~dp0\" -y || (@ECHO Error: Failed to create openpose environment && EXIT /B 1)
 @CALL %micromamba% activate openpose
 @CALL git submodule update --init --recursive --remote
 @CALL SET PROJECT_DIR=%ROOT_DIR%\GaussianHaircut
@@ -103,7 +103,7 @@ SET micromamba=%ROOT_DIR%\micromamba.exe
 @CALL %micromamba% deactivate
 
 @REM PIXIE
-@CALL %micromamba% create -n pixie-env python=3.8 pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 pytorch-cuda=11.8 fvcore pytorch3d==0.7.5 kornia matplotlib -c pytorch -c nvidia -c fvcore -c conda-forge -c pytorch3d -r "%ROOT_DIR%" -y || (@ECHO Error: Failed to create pixie-env && EXIT /B 1)
+@CALL %micromamba% create -n pixie-env python=3.8 pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 pytorch-cuda=11.8 fvcore pytorch3d==0.7.5 kornia matplotlib -c pytorch -c nvidia -c fvcore -c conda-forge -c pytorch3d -r "%~dp0\" -y || (@ECHO Error: Failed to create pixie-env && EXIT /B 1)
 @CALL SET PROJECT_DIR=%ROOT_DIR%\GaussianHaircut
 @CALL SET BLENDER_DIR="C:\Program Files\Blender Foundation\Blender 3.6\"
 @CALL SET OPENPOSE_DIR=%PROJECT_DIR%\ext\openpose
