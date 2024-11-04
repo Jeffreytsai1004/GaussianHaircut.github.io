@@ -36,7 +36,9 @@
 @CALL curl -L "https://drive.usercontent.google.com/download?id=1OBR0Vzb_w5SNc1jmoScA6L8SqVniJGOr" -o %PROJECT_DIR%\ext\NeuralHaircut\pretrained_models\diffusion_prior\dif_ckpt.pth
 @CALL curl -L "https://drive.usercontent.google.com/download?id=1DESwUb-nsmi38VCDvnBwpd9kjcWONNT6" -o %PROJECT_DIR%\ext\NeuralHaircut\pretrained_models\strand_prior\strand_ckpt.pth
 @CALL curl -L "https://drive.google.com/uc?export=download&id=1mPcGu62YPc4MdkT8FFiOCP629xsENHZf" -o %PROJECT_DIR%\ext\NeuralHaircut\PIXIE\pixie_data.tar.gz
-@CALL cd %PROJECT_DIR%\ext\NeuralHaircut\PIXIE && tar -xvzf pixie_data.tar.gz && del pixie_data.tar.gz
+@REM 解压模型
+@CALL 7z x %PROJECT_DIR%\ext\NeuralHaircut\PIXIE\pixie_data.tar.gz -o%PROJECT_DIR%\ext\NeuralHaircut\PIXIE\
+@CALL del %PROJECT_DIR%\ext\NeuralHaircut\PIXIE\pixie_data.tar.gz
 @CALL curl -L "https://drive.google.com/uc?export=download&id=1OOUmnbvpGea0LIGpIWEbOyxfWx6UCiiE" -o %PROJECT_DIR%\ext\hyperIQA\pretrained\koniq_pretrained.pkl
 @CALL cd %PROJECT_DIR%
 @CALL condabin\micromamba.bat deactivate
