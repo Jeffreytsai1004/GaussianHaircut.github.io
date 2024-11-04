@@ -50,11 +50,11 @@ SETLOCAL EnableDelayedExpansion
 @CALL SET "PIXIE_DIR=%PROJECT_DIR%\ext\PIXIE"
 @CALL SET "DATA_PATH=%PROJECT_DIR%\data\raw"
 @CALL pip install -r %ROOT_DIR%requirements.txt
-@CALL pip install %PROJECT_DIR%\ext\pytorch3d
-@CALL pip install %PROJECT_DIR%\ext\NeuralHaircut\npbgpp
-@CALL pip install %PROJECT_DIR%\ext\simple-knn
-@CALL pip install %PROJECT_DIR%\ext\diff_gaussian_rasterization_hair
-@CALL pip install %PROJECT_DIR%\ext\kaolin
+@CALL pip install -e %PROJECT_DIR%\ext\pytorch3d
+@CALL pip install -e %PROJECT_DIR%\ext\NeuralHaircut\npbgpp
+@CALL pip install -e %PROJECT_DIR%\ext\simple-knn
+@CALL pip install -e %PROJECT_DIR%\ext\diff_gaussian_rasterization_hair
+@CALL pip install -e %PROJECT_DIR%\ext\kaolin
 @CALL %micromamba% deactivate
 
 @REM MATTE ANYTHING
