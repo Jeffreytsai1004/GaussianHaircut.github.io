@@ -12,7 +12,7 @@
 @CALL mkdir %PROJECT_DIR%
 @CALL git clone https://github.com/eth-ait/GaussianHaircut.git %PROJECT_DIR%
 
-@CALL cd %PROJECT_DIR%
+@CALL cd %ROOT_DIR%
 @CALL pip install -r requirements.txt
 
 @REM 拉取所有外部库
