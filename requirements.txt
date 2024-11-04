@@ -48,28 +48,6 @@ resize-right==0.0.2
 ./ext/diff_gaussian_rasterization_hair
 ./ext/kaolin
 
-# Matte-Anything dependencies
-tensorboard
-timm
-opencv-python
-mkl
-easydict
-wget
-scikit-image
-gradio
-fairscale
-git+https://github.com/facebookresearch/segment-anything.git
-git+https://github.com/facebookresearch/detectron2.git
-supervision
-
-# PIXIE dependencies
-fvcore
-pytorch3d>=0.7.5
-kornia
-matplotlib
-pyyaml>=5.4.1
-git+https://github.com/1adrianb/face-alignment.git@54623537fd9618ca7c15688fd85aba706ad92b59
-
 
 
 
