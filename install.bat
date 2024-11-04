@@ -3,15 +3,14 @@ SETLOCAL EnableDelayedExpansion
 
 @REM SET VARIABLES
 @CALL SET "ROOT_DIR=%~dp0"
-@CALL SET "ROOT_DIR=%ROOT_DIR:~0,-1%"
-@CALL SET "micromamba=%ROOT_DIR%\micromamba.exe"
-@CALL "%micromamba%" shell init --shell cmd.exe --prefix "%ROOT_DIR%"
+@CALL SET "micromamba=%ROOT_DIR%micromamba.exe"
 
 @REM CREATE BASE ENVIRONMENT
 @CALL %micromamba% create -n gaussianhaircut_base python==3.10.14 git==2.41.0 git-lfs==3.2.0 -c conda-forge -r "%ROOT_DIR%" -y || (@ECHO Error: Failed to create base environment && EXIT /B 1)
+@CALL "%micromamba%" shell init --shell cmd.exe --prefix "%ROOT_DIR%"
 @CALL %micromamba% activate gaussianhaircut_base
 @CALL git config --global http.postBuffer 524288000
-@CALL SET "PROJECT_DIR=%ROOT_DIR%\GaussianHaircut"
+@CALL SET "PROJECT_DIR=%ROOT_DIR%GaussianHaircut"
 @CALL SET "BLENDER_DIR=C:\Program Files\Blender Foundation\Blender 3.6\"
 @CALL SET "OPENPOSE_DIR=%PROJECT_DIR%\ext\openpose"
 @CALL SET "MATTE_ANYTHING_DIR=%PROJECT_DIR%\ext\Matte-Anything"
@@ -44,13 +43,13 @@ SETLOCAL EnableDelayedExpansion
 @REM GAUSSIAN SPLATTING HAIR
 @CALL %micromamba% create -n gaussian_splatting_hair python==3.10.14 git==2.41.0 git-lfs==3.2.0 -c pytorch -c conda-forge -c defaults -c anaconda -c fvcore -c iopath -c bottler -c nvidia -r "%ROOT_DIR%" -y || (@ECHO Error: Failed to create gaussian_splatting_hair environment && EXIT /B 1)
 @CALL %micromamba% activate gaussian_splatting_hair
-@CALL SET "PROJECT_DIR=%ROOT_DIR%\GaussianHaircut"
+@CALL SET "PROJECT_DIR=%ROOT_DIR%GaussianHaircut"
 @CALL SET "BLENDER_DIR=C:\Program Files\Blender Foundation\Blender 3.6\"
 @CALL SET "OPENPOSE_DIR=%PROJECT_DIR%\ext\openpose"
 @CALL SET "MATTE_ANYTHING_DIR=%PROJECT_DIR%\ext\Matte-Anything"
 @CALL SET "PIXIE_DIR=%PROJECT_DIR%\ext\PIXIE"
 @CALL SET "DATA_PATH=%PROJECT_DIR%\data\raw"
-@CALL pip install -r %ROOT_DIR%\requirements.txt
+@CALL pip install -r %ROOT_DIR%requirements.txt
 @CALL pip install %PROJECT_DIR%\ext\pytorch3d
 @CALL pip install %PROJECT_DIR%\ext\NeuralHaircut\npbgpp
 @CALL pip install %PROJECT_DIR%\ext\simple-knn
@@ -61,7 +60,7 @@ SETLOCAL EnableDelayedExpansion
 @REM MATTE ANYTHING
 @CALL %micromamba% create -n matte_anything python==3.10.14 git==2.41.0 git-lfs==3.2.0 pytorch==2.0.0 pytorch-cuda==11.8 torchvision==0.15.1 tensorboard==2.15.0 timm==0.5.4 opencv==4.5.3 mkl==2024.0 setuptools==58.2.0 easydict wget scikit-image gradio==3.46.1 fairscale supervision==0.22.0 -c pytorch -c nvidia -c conda-forge -r "%~dp0\" -y || (@ECHO Error: Failed to create matte_anything environment && EXIT /B 1)
 @CALL %micromamba% activate matte_anything
-@CALL SET "PROJECT_DIR=%ROOT_DIR%\GaussianHaircut"
+@CALL SET "PROJECT_DIR=%ROOT_DIR%GaussianHaircut"
 @CALL SET "BLENDER_DIR=C:\Program Files\Blender Foundation\Blender 3.6\"
 @CALL SET "OPENPOSE_DIR=%PROJECT_DIR%\ext\openpose"
 @CALL SET "MATTE_ANYTHING_DIR=%PROJECT_DIR%\ext\Matte-Anything"
@@ -88,7 +87,7 @@ SETLOCAL EnableDelayedExpansion
 @CALL %micromamba% create -n openpose python==3.10.14 git==2.41.0 git-lfs==3.2.0 cmake=3.20 opencv-python protobuf glog boost h5py numpy make -c conda-forge -r "%ROOT_DIR%" -y || (@ECHO Error: Failed to create openpose environment && EXIT /B 1)
 @CALL %micromamba% activate openpose
 @CALL git submodule update --init --recursive --remote
-@CALL SET "PROJECT_DIR=%ROOT_DIR%\GaussianHaircut"
+@CALL SET "PROJECT_DIR=%ROOT_DIR%GaussianHaircut"
 @CALL SET "BLENDER_DIR=C:\Program Files\Blender Foundation\Blender 3.6\"
 @CALL SET "OPENPOSE_DIR=%PROJECT_DIR%\ext\openpose"
 @CALL SET "MATTE_ANYTHING_DIR=%PROJECT_DIR%\ext\Matte-Anything"
@@ -104,7 +103,7 @@ SETLOCAL EnableDelayedExpansion
 
 @REM PIXIE
 @CALL %micromamba% create -n pixie-env python=3.8 pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 pytorch-cuda=11.8 fvcore pytorch3d==0.7.5 kornia matplotlib -c pytorch -c nvidia -c fvcore -c conda-forge -c pytorch3d -r "%ROOT_DIR%" -y || (@ECHO Error: Failed to create pixie-env && EXIT /B 1)
-@CALL SET "PROJECT_DIR=%ROOT_DIR%\GaussianHaircut"
+@CALL SET "PROJECT_DIR=%ROOT_DIR%GaussianHaircut"
 @CALL SET "BLENDER_DIR=C:\Program Files\Blender Foundation\Blender 3.6\"
 @CALL SET "OPENPOSE_DIR=%PROJECT_DIR%\ext\openpose"
 @CALL SET "MATTE_ANYTHING_DIR=%PROJECT_DIR%\ext\Matte-Anything"
