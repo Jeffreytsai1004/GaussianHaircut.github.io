@@ -56,7 +56,7 @@
 
 @REM Matte-Anything
 @REM 创建 Matte-Anything 环境
-@CALL "%~dp0micromamba.exe" create -n matte_anything python==3.10.14 git==2.41.0 git-lfs==3.2.0 pytorch=2.0.0 pytorch-cuda=11.8 torchvision tensorboard timm=0.5.4 opencv=4.5.3 mkl=2024.0 setuptools=58.2.0 easydict wget scikit-image gradio=3.46.1 fairscale -c pytorch -c nvidia -c conda-forge -r "%~dp0\ext\Matte-Anything\" -y
+@CALL "%~dp0micromamba.exe" create -n matte_anything python==3.10.14 git==2.41.0 git-lfs==3.2.0 pytorch=2.0.0 pytorch-cuda=11.8 torchvision tensorboard timm=0.5.4 opencv=4.5.3 mkl=2024.0 setuptools=58.2.0 easydict wget scikit-image gradio=3.46.1 fairscale -c pytorch -c nvidia -c conda-forge -r "%~dp0\" -y
 @CALL condabin\micromamba.bat activate matte_anything
 @CALL SET ROOT_DIR=%~dp0
 @CALL SET PROJECT_DIR=%ROOT_DIR%GaussianHaircut
@@ -80,7 +80,7 @@
 
 @REM OpenPose
 @REM 创建 OpenPose 环境
-@CALL "%~dp0micromamba.exe" create -n openpose python==3.10.14 git==2.41.0 git-lfs==3.2.0 cmake=3.20 make -c conda-forge -r "%PROJECT_DIR%\ext\openpose" -y
+@CALL "%~dp0micromamba.exe" create -n openpose python==3.10.14 git==2.41.0 git-lfs==3.2.0 cmake=3.20 make -c conda-forge -r "%~dp0\" -y
 @CALL condabin\micromamba.bat activate openpose
 @CALL SET ROOT_DIR=%~dp0
 @CALL SET PROJECT_DIR=%ROOT_DIR%GaussianHaircut
@@ -104,7 +104,7 @@
 @CALL condabin\micromamba.bat deactivate
 
 @REM PIXIE
-@CALL "%~dp0micromamba.exe" create -n pixie_env python==3.8 pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 pytorch-cuda=11.8 fvcore pytorch3d==0.7.5 kornia matplotlib -c pytorch -c nvidia -c fvcore -c conda-forge -c pytorch3d -r "%PROJECT_DIR%\ext\PIXIE" -y
+@CALL "%~dp0micromamba.exe" create -n pixie_env python==3.8 pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 pytorch-cuda=11.8 fvcore pytorch3d==0.7.5 kornia matplotlib -c pytorch -c nvidia -c fvcore -c conda-forge -c pytorch3d -r "%~dp0\" -y
 @CALL condabin\micromamba.bat activate pixie_env
 @CALL SET ROOT_DIR=%~dp0
 @CALL SET PROJECT_DIR=%ROOT_DIR%GaussianHaircut
