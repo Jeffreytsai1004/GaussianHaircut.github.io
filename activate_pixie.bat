@@ -1,8 +1,5 @@
-@ECHO OFF
-SETLOCAL EnableDelayedExpansion
-
-@CALL SET micromamba=%~dp0micromamba.exe
-@CALL %micromamba% activate pixie-env
+@CALL "%~dp0micromamba.exe" shell init --shell cmd.exe --prefix "%~dp0\"
+start cmd /k "%~dp0condabin\micromamba.bat" activate pixie-env
 
 @CALL SET ROOT_DIR=%~dp0
 @CALL SET PROJECT_DIR=%ROOT_DIR%GaussianHaircut
@@ -10,4 +7,4 @@ SETLOCAL EnableDelayedExpansion
 @CALL SET OPENPOSE_DIR=%PROJECT_DIR%\ext\openpose
 @CALL SET MATTE_ANYTHING_DIR=%PROJECT_DIR%\ext\Matte-Anything
 @CALL SET PIXIE_DIR=%PROJECT_DIR%\ext\PIXIE
-@CALL SET DATA_PATH=%PROJECT_DIR%\data\raw 
+@CALL SET DATA_PATH=%PROJECT_DIR%\data\raw

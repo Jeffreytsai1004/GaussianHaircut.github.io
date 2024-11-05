@@ -1,8 +1,5 @@
-@ECHO OFF
-SETLOCAL EnableDelayedExpansion
-
-@CALL SET micromamba=%~dp0micromamba.exe
-@CALL %micromamba% activate gaussianhaircut_base
+@CALL "%~dp0micromamba.exe" shell init --shell cmd.exe --prefix "%~dp0\"
+start cmd /k "%~dp0condabin\micromamba.bat" activate gaussianhaircut_base
 
 @CALL SET ROOT_DIR=%~dp0
 @CALL SET PROJECT_DIR=%ROOT_DIR%GaussianHaircut
