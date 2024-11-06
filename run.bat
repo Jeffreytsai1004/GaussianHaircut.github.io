@@ -8,6 +8,15 @@
 REM Need to use this to activate conda environments
 @CALL "%~dp0condabin\micromamba.bat" activate gaussianhaircut_base
 
+@ECHO OFF
+@ECHO 检查环境...
+@CALL "%~dp0micromamba.exe" env list
+@IF NOT EXIST "%~dp0envs\gaussian_splatting_hair" (
+    @ECHO gaussian_splatting_hair 环境未安装
+    @PAUSE
+    exit /b 1
+)
+
 REM ##################
 REM #     预处理     #
 REM ##################

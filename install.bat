@@ -1,3 +1,4 @@
+@ECHO OFF
 @REM SET BASE PATHS
 SET "ROOT_DIR=%~dp0"
 SET "ROOT_DIR=%ROOT_DIR:~0,-1%"
@@ -7,7 +8,7 @@ SET "MAMBABAT=%ROOT_DIR%\condabin\micromamba.bat"
 @REM CREATE BASE ENVIRONMENT
 @CALL "%~dp0micromamba.exe" create -n gaussianhaircut_base python==3.10.14 git==2.41.0 git-lfs==3.2.0 -c conda-forge -r "%~dp0\" -y
 @CALL "%~dp0micromamba.exe" shell init --shell cmd.exe --prefix "%~dp0\"
-@CALL condabin\micromamba.bat activate gaussianhaircut_base
+@CALL "%~dp0condabin\micromamba.bat" activate gaussianhaircut_base
 @CALL SET ROOT_DIR=%~dp0
 @CALL SET "ROOT_DIR=%ROOT_DIR:~0,-1%"
 @CALL SET PROJECT_DIR=%ROOT_DIR%\GaussianHaircut
@@ -38,11 +39,12 @@ SET "MAMBABAT=%ROOT_DIR%\condabin\micromamba.bat"
 @CALL curl -L "https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth" -o %MATTE_ANYTHING_DIR%\pretrained\groundingdino_swint_ogc.pth
 @CALL curl -L "https://drive.usercontent.google.com/download?id=1d97oKuITCeWgai2Tf3iNilt6rMSSYzkW" -o %MATTE_ANYTHING_DIR%\pretrained\ViTMatte_B_DIS.pth
 @CALL curl -L "https://drive.usercontent.google.com/download?id=1Yn03cKKfVOq4qXmgBMQD20UMRRRkd_tV" -o %OPENPOSE_DIR%\models.tar.gz && 7z x %OPENPOSE_DIR%\models.tar.gz -o%OPENPOSE_DIR%\ && del %OPENPOSE_DIR%\models.tar.gz
+@CALL cd %ROOT_DIR%
 @CALL %micromamba% deactivate
 
 @REM GAUSSIAN SPLATTING HAIR
 @CALL "%~dp0micromamba.exe" create -n gaussian_splatting_hair python==3.10.14 git==2.41.0 git-lfs==3.2.0 -c pytorch -c conda-forge -c defaults -c anaconda -c fvcore -c iopath -c bottler -c nvidia -r "%~dp0\" -y
-@CALL condabin\micromamba.bat activate gaussian_splatting_hair
+@CALL "%~dp0condabin\micromamba.bat" activate gaussian_splatting_hair
 @CALL SET ROOT_DIR=%~dp0
 @CALL SET "ROOT_DIR=%ROOT_DIR:~0,-1%"
 @CALL SET PROJECT_DIR=%ROOT_DIR%\GaussianHaircut
@@ -53,16 +55,47 @@ SET "MAMBABAT=%ROOT_DIR%\condabin\micromamba.bat"
 @CALL SET DATA_PATH=%PROJECT_DIR%\data\raw
 @CALL pip install torch==2.2.0+cu118 torchvision torchaudio torchdiffeq torchsde --index-url https://download.pytorch.org/whl/cu118 --no-cache-dir
 @CALL pip install -r %ROOT_DIR%\requirements.txt
-@CALL pip install -e %PROJECT_DIR%\ext\pytorch3d
-@CALL pip install -e %PROJECT_DIR%\ext\NeuralHaircut\npbgpp
-@CALL pip install -e %PROJECT_DIR%\ext\simple-knn
-@CALL pip install -e %PROJECT_DIR%\ext\diff_gaussian_rasterization_hair
+@ECHO 开始安装 pytorch3d...
+@CALL cd %PROJECT_DIR%\ext\pytorch3d && pip install -e .
+@IF %ERRORLEVEL% NEQ 0 (
+    @ECHO pytorch3d 安装失败
+    @PAUSE
+    exit /b %ERRORLEVEL%
+)
+@ECHO 开始安装 npbgpp...
+@CALL cd %PROJECT_DIR%\ext\NeuralHaircut\npbgpp && pip install -e .
+@IF %ERRORLEVEL% NEQ 0 (
+    @ECHO npbgpp 安装失败
+    @PAUSE
+    exit /b %ERRORLEVEL%
+)
+@ECHO 开始安装 simple-knn...
+@CALL cd %PROJECT_DIR%\ext\simple-knn && pip install -e .
+@IF %ERRORLEVEL% NEQ 0 (
+    @ECHO simple-knn 安装失败
+    @PAUSE
+    exit /b %ERRORLEVEL%
+)
+@ECHO 开始安装 diff_gaussian_rasterization_hair...
+@CALL cd %PROJECT_DIR%\ext\diff_gaussian_rasterization_hair && pip install -e .
+@IF %ERRORLEVEL% NEQ 0 (
+    @ECHO diff_gaussian_rasterization_hair 安装失败
+    @PAUSE
+    exit /b %ERRORLEVEL%
+)
+@ECHO 开始安装 kaolin...
 @CALL pip install -e %PROJECT_DIR%\ext\kaolin
+@IF %ERRORLEVEL% NEQ 0 (
+    @ECHO kaolin 安装失败
+    @PAUSE
+    exit /b %ERRORLEVEL%
+)
+@CALL cd %ROOT_DIR%
 @CALL %micromamba% deactivate
 
 @REM MATTE ANYTHING
 @CALL "%~dp0micromamba.exe" create -n matte_anything python==3.10.14 git==2.41.0 git-lfs==3.2.0 pytorch==2.0.0 pytorch-cuda==11.8 torchvision==0.15.1 tensorboard==2.15.0 timm==0.5.4 opencv==4.5.3 mkl==2024.0 setuptools==58.2.0 easydict wget scikit-image gradio==3.46.1 fairscale supervision==0.22.0 -c pytorch -c nvidia -c conda-forge -r "%~dp0\" -y
-@CALL condabin\micromamba.bat activate matte_anything
+@CALL "%~dp0condabin\micromamba.bat" activate matte_anything
 @CALL SET ROOT_DIR=%~dp0
 @CALL SET "ROOT_DIR=%ROOT_DIR:~0,-1%"
 @CALL SET PROJECT_DIR=%ROOT_DIR%\GaussianHaircut
@@ -78,7 +111,7 @@ SET "MAMBABAT=%ROOT_DIR%\condabin\micromamba.bat"
 
 @REM OPENPOSE
 @CALL "%~dp0micromamba.exe" create -n openpose python==3.10.14 git==2.41.0 git-lfs==3.2.0 cmake=3.20 opencv-python protobuf glog boost h5py numpy make -c conda-forge -r "%~dp0\" -y
-@CALL condabin\micromamba.bat openpose
+@CALL "%~dp0condabin\micromamba.bat" activate openpose
 @CALL git submodule update --init --recursive --remote
 @CALL SET ROOT_DIR=%~dp0
 @CALL SET "ROOT_DIR=%ROOT_DIR:~0,-1%"
@@ -98,7 +131,7 @@ SET "MAMBABAT=%ROOT_DIR%\condabin\micromamba.bat"
 
 @REM PIXIE
 @CALL "%~dp0micromamba.exe" create -n pixie-env python=3.8 pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 pytorch-cuda=11.8 fvcore pytorch3d==0.7.5 kornia matplotlib -c pytorch -c nvidia -c fvcore -c conda-forge -c pytorch3d -r "%~dp0\" -y
-@CALL condabin\micromamba.bat activate pixie-env
+@CALL "%~dp0condabin\micromamba.bat" activate pixie-env
 @CALL SET ROOT_DIR=%~dp0
 @CALL SET "ROOT_DIR=%ROOT_DIR:~0,-1%"
 @CALL SET PROJECT_DIR=%ROOT_DIR%\GaussianHaircut
@@ -109,7 +142,10 @@ SET "MAMBABAT=%ROOT_DIR%\condabin\micromamba.bat"
 @CALL SET DATA_PATH=%PROJECT_DIR%\data\raw
 @CALL %micromamba% activate pixie-env
 @CALL pip install pyyaml==5.4.1
-@CALL pip install -e %PROJECT_DIR%\ext\face-alignment
+@CALL cd %PROJECT_DIR%\ext\face-alignment && pip install -e .
+@CALL cd %ROOT_DIR%
 @CALL %micromamba% deactivate
 
 @ECHO All installations completed successfully.
+
+@ECHO PAUSE
