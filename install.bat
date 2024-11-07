@@ -53,7 +53,7 @@ SET "MAMBABAT=%ROOT_DIR%\condabin\micromamba.bat"
 @CALL SET MATTE_ANYTHING_DIR=%PROJECT_DIR%\ext\Matte-Anything
 @CALL SET PIXIE_DIR=%PROJECT_DIR%\ext\PIXIE
 @CALL SET DATA_PATH=%PROJECT_DIR%\data\raw
-@CALL pip install torch==2.2.0+cu118 torchvision torchaudio torchdiffeq torchsde --index-url https://download.pytorch.org/whl/cu118 --no-cache-dir
+@CALL pip install pytorch==2.2.0+cu118 torchvision torchaudio torchdiffeq torchsde --index-url https://download.pytorch.org/whl/cu118 --no-cache-dir
 @CALL pip install -r %ROOT_DIR%\requirements.txt
 @ECHO 开始安装 pytorch3d...
 @CALL cd %PROJECT_DIR%\ext\pytorch3d && pip install -e .
