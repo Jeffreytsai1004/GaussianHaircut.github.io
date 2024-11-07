@@ -21,7 +21,7 @@ SET "MAMBABAT=%ROOT_DIR%\condabin\micromamba.bat"
 @CALL git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose %PROJECT_DIR%\ext\openpose --depth 1 && cd %PROJECT_DIR%\ext\openpose && git submodule update --init --recursive --remote && cd %PROJECT_DIR%
 @CALL git clone https://github.com/hustvl/Matte-Anything %PROJECT_DIR%\ext\Matte-Anything
 @CALL git clone https://github.com/IDEA-Research/GroundingDINO.git %PROJECT_DIR%\ext\Matte-Anything\GroundingDINO
-@CALL git clone git@github.com:egorzakharov/NeuralHaircut.git --recursive %PROJECT_DIR%\ext\NeuralHaircut
+@CALL git clone https://github.com/egorzakharov/NeuralHaircut.git --recursive %PROJECT_DIR%\ext\NeuralHaircut
 @CALL git clone https://github.com/facebookresearch/pytorch3d %PROJECT_DIR%\ext\pytorch3d && cd %PROJECT_DIR%\ext\pytorch3d && git checkout 2f11ddc5ee7d6bd56f2fb6744a16776fab6536f7 && cd %PROJECT_DIR%
 @CALL git clone https://github.com/camenduru/simple-knn %PROJECT_DIR%\ext\simple-knn
 @CALL git clone https://github.com/g-truc/glm %PROJECT_DIR%\ext\diff_gaussian_rasterization_hair\third_party\glm && cd %PROJECT_DIR%\ext\diff_gaussian_rasterization_hair\third_party\glm && git checkout 5c46b9c07008ae65cb81ab79cd677ecc1934b903 && cd %PROJECT_DIR%
@@ -30,7 +30,13 @@ SET "MAMBABAT=%ROOT_DIR%\condabin\micromamba.bat"
 @CALL git clone https://github.com/facebookresearch/segment-anything.git %PROJECT_DIR%\ext\segment-anything
 @CALL git clone https://github.com/facebookresearch/detectron2.git %PROJECT_DIR%\ext\detectron2
 @CALL git clone https://github.com/yfeng95/PIXIE %PROJECT_DIR%\ext\PIXIE
-@CALL git clone https://github.com/1adrianb/face-alignment.git@54623537fd9618ca7c15688fd85aba706ad92b59 %PROJECT_DIR%\ext\face-alignment
+@CALL git clone https://github.com/1adrianb/face-alignment.git %PROJECT_DIR%\ext\face-alignment
+@REM @CALL cd %PROJECT_DIR%\ext\face-alignment && git checkout 54623537fd9618ca7c15688fd85aba706ad92b59
+@REM @IF %ERRORLEVEL% NEQ 0 (
+@REM     @ECHO face-alignment 安装失败
+@REM     @PAUSE
+@REM     exit /b %ERRORLEVEL%
+@REM )
 @CALL curl -L "https://drive.usercontent.google.com/download?id=1OBR0Vzb_w5SNc1jmoScA6L8SqVniJGOr" -o %PROJECT_DIR%\ext\NeuralHaircut\pretrained_models\diffusion_prior\dif_ckpt.pth
 @CALL curl -L "https://drive.usercontent.google.com/download?id=1DESwUb-nsmi38VCDvnBwpd9kjcWONNT6" -o %PROJECT_DIR%\ext\NeuralHaircut\pretrained_models\strand_prior\strand_ckpt.pth
 @CALL curl -L "https://drive.google.com/uc?export=download&id=1mPcGu62YPc4MdkT8FFiOCP629xsENHZf" -o %PROJECT_DIR%\ext\NeuralHaircut\PIXIE\pixie_data.tar.gz && 7z x %PROJECT_DIR%\ext\NeuralHaircut\PIXIE\pixie_data.tar.gz -o%PROJECT_DIR%\ext\NeuralHaircut\PIXIE\ && del %PROJECT_DIR%\ext\NeuralHaircut\PIXIE\pixie_data.tar.gz
@@ -53,7 +59,8 @@ SET "MAMBABAT=%ROOT_DIR%\condabin\micromamba.bat"
 @CALL SET MATTE_ANYTHING_DIR=%PROJECT_DIR%\ext\Matte-Anything
 @CALL SET PIXIE_DIR=%PROJECT_DIR%\ext\PIXIE
 @CALL SET DATA_PATH=%PROJECT_DIR%\data\raw
-@CALL pip install pytorch==2.2.0+cu118 torchvision torchaudio torchdiffeq torchsde --index-url https://download.pytorch.org/whl/cu118 --no-cache-dir
+@CALL pip install --force-reinstall torch==2.2.0+cu121 torchvision==0.17.0+cu121 torchaudio==2.2.0+cu121 --index-url https://download.pytorch.org/whl/cu121 --no-cache-dir
+@CALL pip install torchdiffeq torchsde
 @CALL pip install -r %ROOT_DIR%\requirements.txt
 @ECHO 开始安装 pytorch3d...
 @CALL cd %PROJECT_DIR%\ext\pytorch3d && pip install -e .
