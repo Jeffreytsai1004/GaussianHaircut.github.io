@@ -1,14 +1,9 @@
 @ECHO OFF
-@REM SET BASE PATHS
-SET "ROOT_DIR=%~dp0"
-SET "ROOT_DIR=%ROOT_DIR:~0,-1%"
-SET "micromamba=%ROOT_DIR%\micromamba.exe"
-SET "MAMBABAT=%ROOT_DIR%\condabin\micromamba.bat"
 
 @REM CREATE BASE ENVIRONMENT
 @CALL .\micromamba.exe create -n gaussianhaircut_base python==3.10.14 git==2.41.0 git-lfs==3.2.0 -c conda-forge -r "%~dp0\" -y
 @CALL .\micromamba.exe shell init --shell cmd.exe --prefix "%~dp0\"
-@CALL "%~dp0condabin\micromamba.bat" activate gaussianhaircut_base
+@CALL .\condabin\micromamba.bat activate gaussianhaircut_base
 @CALL SET ROOT_DIR=%~dp0
 @CALL SET "ROOT_DIR=%ROOT_DIR:~0,-1%"
 @CALL SET PROJECT_DIR=%ROOT_DIR%\GaussianHaircut

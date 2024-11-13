@@ -13,7 +13,7 @@
 @CALL SET PIXIE_DIR=%PROJECT_DIR%\ext\PIXIE
 @CALL SET DATA_PATH=%PROJECT_DIR%\data\raw
 @CALL python -m pip install --upgrade pip
-@CALL install cmake opencv-python protobuf glog boost h5py numpy make
+@CALL pip install cmake opencv-python protobuf glog boost h5py numpy make
 @IF NOT EXIST %OPENPOSE_DIR%\build 
 @CALL mkdir %OPENPOSE_DIR%\build
 @CALL cd %OPENPOSE_DIR%\build

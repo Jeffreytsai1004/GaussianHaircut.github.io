@@ -17,6 +17,7 @@ SET "MAMBABAT=%ROOT_DIR%\condabin\micromamba.bat"
 @CALL SET MATTE_ANYTHING_DIR=%PROJECT_DIR%\ext\Matte-Anything
 @CALL SET PIXIE_DIR=%PROJECT_DIR%\ext\PIXIE
 @CALL SET DATA_PATH=%PROJECT_DIR%\data\raw
+@CALL python -m pip install --upgrade pip
 @CALL pip install -e %PROJECT_DIR%\ext\segment-anything
 @CALL pip install -e %PROJECT_DIR%\ext\detectron2
 @CALL pip install -e %PROJECT_DIR%\ext\Matte-Anything\GroundingDINO
