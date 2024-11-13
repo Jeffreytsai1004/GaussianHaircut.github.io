@@ -1,12 +1,6 @@
 @ECHO OFF
-@REM SET BASE PATHS
-SET "ROOT_DIR=%~dp0"
-SET "ROOT_DIR=%ROOT_DIR:~0,-1%"
-SET "micromamba=%ROOT_DIR%\micromamba.exe"
-SET "MAMBABAT=%ROOT_DIR%\condabin\micromamba.bat"
-
 @REM OPENPOSE
-@CALL .\micromamba.exe create -n openpose python==3.10.14 git==2.41.0 git-lfs==3.2.0 cmake=3.20 opencv-python protobuf glog boost h5py numpy make -c conda-forge -r "%~dp0\" -y
+@CALL .\micromamba.exe create -n openpose python==3.10.14 git==2.41.0 git-lfs==3.2.0 -c pytorch -c conda-forge -r "%~dp0\" -y
 @CALL .\micromamba.exe shell init --shell cmd.exe --prefix "%~dp0\"
 @CALL .\condabin\micromamba.bat activate openpose
 @CALL git submodule update --init --recursive --remote
@@ -18,6 +12,8 @@ SET "MAMBABAT=%ROOT_DIR%\condabin\micromamba.bat"
 @CALL SET MATTE_ANYTHING_DIR=%PROJECT_DIR%\ext\Matte-Anything
 @CALL SET PIXIE_DIR=%PROJECT_DIR%\ext\PIXIE
 @CALL SET DATA_PATH=%PROJECT_DIR%\data\raw
+@CALL python -m pip install --upgrade pip
+@CALL install cmake opencv-python protobuf glog boost h5py numpy make
 @IF NOT EXIST %OPENPOSE_DIR%\build 
 @CALL mkdir %OPENPOSE_DIR%\build
 @CALL cd %OPENPOSE_DIR%\build
@@ -25,7 +21,5 @@ SET "MAMBABAT=%ROOT_DIR%\condabin\micromamba.bat"
 @CALL cmake --build . --config Release
 @CALL cd %ROOT_DIR%
 @CALL .\condabin\micromamba.bat deactivate
-
 @ECHO Installation of openpose completed.
-
 @ECHO PAUSE
