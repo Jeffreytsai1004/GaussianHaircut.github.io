@@ -11,9 +11,8 @@
 @CALL SET MATTE_ANYTHING_DIR=%PROJECT_DIR%\ext\Matte-Anything
 @CALL SET PIXIE_DIR=%PROJECT_DIR%\ext\PIXIE
 @CALL SET DATA_PATH=%PROJECT_DIR%\data\raw
-@REM Python install pip
 @CALL python -m pip install --upgrade pip
-@CALL pip install --force-reinstall torch==2.2.0+cu121 torchvision==0.17.0+cu121 torchaudio==2.2.0+cu121 --index-url https://download.pytorch.org/whl/cu121 --no-cache-dir
+@CALL pip install --force-reinstall torch==2.2.0+cu121 torchvision==0.17.0+cu121 torchaudio==2.2.0+cu121 --index-url https://download.pytorch.org/whl/cu121
 @CALL pip install pyyaml fvcore kornia matplotlib
 @CALL cd %PROJECT_DIR%\ext\face-alignment && pip install -e .
 @CALL cd %ROOT_DIR%

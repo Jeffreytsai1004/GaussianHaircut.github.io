@@ -14,39 +14,39 @@
 @CALL SET DATA_PATH=%PROJECT_DIR%\data\raw
 @CALL pip install --force-reinstall torch==2.2.0+cu121 torchvision==0.17.0+cu121 torchaudio==2.2.0+cu121 --index-url https://download.pytorch.org/whl/cu121 --no-cache-dir
 @CALL pip install torchdiffeq torchsde
-@CALL pip install -r %ROOT_DIR%\requirements.txt
-@ECHO 开始安装 pytorch3d...
+@CALL pip install -r .\requirements.txt
+@ECHO Starting installation pytorch3d...
 @CALL cd %PROJECT_DIR%\ext\pytorch3d && pip install -e .
 @IF %ERRORLEVEL% NEQ 0 (
-    @ECHO pytorch3d 安装失败
+    @ECHO pytorch3d installation failed
     @PAUSE
     exit /b %ERRORLEVEL%
 )
-@ECHO 开始安装 npbgpp...
+@ECHO Starting installation of npbgpp...
 @CALL cd %PROJECT_DIR%\ext\NeuralHaircut\npbgpp && pip install -e .
 @IF %ERRORLEVEL% NEQ 0 (
-    @ECHO npbgpp 安装失败
+    @ECHO npbgpp installation failed
     @PAUSE
     exit /b %ERRORLEVEL%
 )
-@ECHO 开始安装 simple-knn...
+@ECHO Starting installation simple-knn...
 @CALL cd %PROJECT_DIR%\ext\simple-knn && pip install -e .
 @IF %ERRORLEVEL% NEQ 0 (
-    @ECHO simple-knn 安装失败
+    @ECHO simple-knn installation failed
     @PAUSE
     exit /b %ERRORLEVEL%
 )
-@ECHO 开始安装 diff_gaussian_rasterization_hair...
+@ECHO Starting installation diff_gaussian_rasterization_hair...
 @CALL cd %PROJECT_DIR%\ext\diff_gaussian_rasterization_hair && pip install -e .
 @IF %ERRORLEVEL% NEQ 0 (
-    @ECHO diff_gaussian_rasterization_hair 安装失败
+    @ECHO diff_gaussian_rasterization_hair installation failed
     @PAUSE
     exit /b %ERRORLEVEL%
 )
-@ECHO 开始安装 kaolin...
+@ECHO Starting installation kaolin...
 @CALL pip install -e %PROJECT_DIR%\ext\kaolin
 @IF %ERRORLEVEL% NEQ 0 (
-    @ECHO kaolin 安装失败
+    @ECHO kaolin installation failed
     @PAUSE
     exit /b %ERRORLEVEL%
 )
